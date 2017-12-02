@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="maydayChat">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mayday Chat</title>
+</head>
+<body ng-controller="ChatController">
+
+    <div ng-hide="chats">
+        <div>
+            <label for="">Username</label>
+            <input type="text" ng-model="chat.username">
+        </div>
+        <div>
+            <label for="">Channel</label>
+            <input type="text" ng-model="chat.channel">
+        </div>
+        <div>
+            <button ng-click="start(chat)">Go</button>
+        </div>
+
+    </div>
+    
+    <div ng-show="chats">
+        <ul>
+            <li ng-repeat="chat in chats.messages">
+                <b>{{chat.username}}: </b>
+                {{chat.message}}
+            </li>
+        </ul>
+
+        <input type="text" ng-model="chat.message"> <button ng-click="send(chat, chats.channelID)">Send</button>
+    </div>
+    
+    <!-- PLUGINS -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/angular/angular.min.js"></script>
+
+    <script src="./app/scripts/app.js"></script>
+    <script src="./app/scripts/services.js"></script>
+    <script src="./app/scripts/controllers.js"></script>
+</body>
+</html>
